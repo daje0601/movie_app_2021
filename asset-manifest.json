@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/daje0601.github.io/movie_app_2021/static/css/main.92fd9e64.chunk.css",
+    "main.js": "/daje0601.github.io/movie_app_2021/static/js/main.1fbfa7ff.chunk.js",
+    "main.js.map": "/daje0601.github.io/movie_app_2021/static/js/main.1fbfa7ff.chunk.js.map",
+    "runtime-main.js": "/daje0601.github.io/movie_app_2021/static/js/runtime-main.8f021c5e.js",
+    "runtime-main.js.map": "/daje0601.github.io/movie_app_2021/static/js/runtime-main.8f021c5e.js.map",
+    "static/js/2.915a66f4.chunk.js": "/daje0601.github.io/movie_app_2021/static/js/2.915a66f4.chunk.js",
+    "static/js/2.915a66f4.chunk.js.map": "/daje0601.github.io/movie_app_2021/static/js/2.915a66f4.chunk.js.map",
+    "index.html": "/daje0601.github.io/movie_app_2021/index.html",
+    "static/css/main.92fd9e64.chunk.css.map": "/daje0601.github.io/movie_app_2021/static/css/main.92fd9e64.chunk.css.map",
+    "static/js/2.915a66f4.chunk.js.LICENSE.txt": "/daje0601.github.io/movie_app_2021/static/js/2.915a66f4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8f021c5e.js",
+    "static/js/2.915a66f4.chunk.js",
+    "static/css/main.92fd9e64.chunk.css",
+    "static/js/main.1fbfa7ff.chunk.js"
+  ]
+}
