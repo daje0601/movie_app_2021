@@ -1,71 +1,55 @@
 import React from "react";
-import PropTypes from "prop-types";
+import axios from "axios";
+import Movie from "./Movie";
+import "./App.css";
 
-
-
-
-const foodILike = [
-  {
-  id: 1,
-  name: "Kimchi",
-  image:
-    "http://aeriskitchen.com/wp-content/uploads/2008/09/kimchi_bokkeumbap_02-.jpg",
-    rating: 5,
-},
-  {
-  id: 2,
-  rating: 4.9,
-  name: "Samgyeopsal",
-  image:
-    "https://3.bp.blogspot.com/-hKwIBxIVcQw/WfsewX3fhJI/AAAAAAAAALk/yHxnxFXcfx4ZKSfHS_RQNKjw3bAC03AnACLcBGAs/s400/DSC07624.jpg"
-},
-  {
-  id: 3,
-  rating: 4.8,
-  name: "Bibimbap",
-  image:
-    "http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/12/03/bibimbop-ck-x.jpg?itok=RoXlp6Xb"
-},
-  {
-  id: 4,
-  rating: 4.7,
-  name: "Doncasu",
-  image:
-    "https://s3-media3.fl.yelpcdn.com/bphoto/7F9eTTQ_yxaWIRytAu5feA/ls.jpg"
-},
-  {
-  id: 5,
-  rating: 4.6,
-  name: "Kimbap",
-  image:
-    "http://cdn2.koreanbapsang.com/wp-content/uploads/2012/05/DSC_1238r-e1454170512295.jpg"
+class App extends React.Component{
+  state = {
+    isLoading: true,
+    movies: [] // 이건 좋은 습관이야
+  };
+  // async와 await는 영화를 받아온 후 프로그램이 작동될 수 있도록 도와주는 wait key야! 
+  // 드디어 이게 무엇인지 정확히 이해가 됬어 
+  getMoives = async () => {
+    const {
+      data: {
+        data: { movies }
+      }
+    } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
+    this.setState({ movies, isLoading: false });
+  };
+  
+  // 우리가 render을 호출하면 가장 처음으로 componentDidMount가 호출된다.
+  componentDidMount() {
+    this.getMoives();
+  }
+  render() {
+    const { isLoading, movies } = this.state; // 이건 ES6에서 배울 수 있는데 좋은 습관이야 
+    return (
+      <section class="container">
+        {isLoading ? (
+          <div class="loader">
+            <span class="loader__text">Loading. . .</span>
+          </div>
+        ) : (
+            <div class="movies">
+              {
+                movies.map(movie => (
+                  <Movie
+                    key={movie.id}
+                    id={movie.id}
+                    year={movie.year}
+                    title={movie.title}
+                    summary={movie.summary}
+                    poster={movie.medium_cover_image}
+                  />
+                ))}
+            </div>
+          )}
+      </section>);
+  }
 }
-];
-
-function Food({ name, picture, rating }) {
-  return (
-    <div>
-      <h2>I like {name}</h2>
-      <h4>{rating}/5.0</h4>
-      <img src={picture} alt={name} />
-    </div>
-  );
-}
-
-Food.propTypes = {
-  name: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  rating: PropTypes.number
-};
-
-function App() {
-  return (
-    <div>
-      {foodILike.map(dish => (
-        <Food key={dish.id} name={dish.name} picture={dish.image} rating={dish.rating} />
-        ))}
-    </div>
-  );
-}
-
 export default App;
+
+
+ 
